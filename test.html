@@ -1,0 +1,26 @@
+<html>
+<head><meta charset="utf-8" /></head>
+<body>
+<input type="text" id="speech" style="font-size: 40px;"  id="speech" size="50" />
+<script>
+    if ('webkitSpeechRecognition' in window) {
+    var recognition = new webkitSpeechRecognition();
+    recognition.continuous = true;
+    recognition.interimResults = true;
+     recognition.onstart = function( e ) {
+        console.log( e );
+    };
+    var final_transcript = '';
+    recognition.onresult = function( event ) {
+      var final_transcript = '';
+      for (var i = event.resultIndex; i < event.results.length; ++i) {
+        if (event.results[i].isFinal) {
+          final_transcript += event.results[i][0].transcript;
+        } 
+      }
+      document.getElementById( 'speech' ).value = final_transcript;
+    };
+    recognition.start();
+  }
+</script>
+</body>
