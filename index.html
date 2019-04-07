@@ -63,9 +63,9 @@ function myFunction() {
                 <div class="container">
                     <div class="hero-inner">
                         <div class="hero-copy">
-                            <h1 class="hero-title h2-mobile mt-0 is-revealing">2019 ARThon: hackathon for artists and more</h1>
-                            <p class="hero-paragraph is-revealing">2019 ARThon invites artists, programmers, designers, researchers to realize and refine collaborative projects that may redefine our world.</p>
-                            <p class="hero-paragraph is-revealing">2019 藝術松 歡迎藝術家、設計師、Hackers、研究者以黑客松的方式一起協作計劃，重新定義藝術世界可能的樣貌。</p>
+                            <h1 class="hero-title h2-mobile mt-0 is-revealing" id="teaserTitle">2019 ARThon: hackathon for artists and more</h1>
+                            <p class="hero-paragraph is-revealing" id="teaserTextEn">2019 ARThon invites artists, programmers, designers, researchers to realize and refine collaborative projects that may redefine our world.</p>
+                            <p class="hero-paragraph is-revealing" id="teaserTextTw">2019 藝術松 歡迎藝術家、設計師、Hackers、研究者以黑客松的方式一起協作計劃，重新定義藝術世界可能的樣貌。</p>
                             <p class="hero-cta is-revealing"><a class="button button-primary button-shadow" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdFLonXJXXczM017i9QqPuHTYNhb7DsVMJ-ncjTOe5XdmcBPQ/viewform">Click to Register / 馬上報名</a></p>
 
                             <!-- <p class="hero-cta is-revealing"><a class="button button-primary button-shadow" target="_blank" onclick="myFunction()">ARThon#002 即將開始</a></p> -->
@@ -143,7 +143,7 @@ function myFunction() {
                            
                 <div class="section-square">
                     <br>
-                    #2019ARThon002
+                    <div id="hashtag">#2019ARThon002</div>
                 </div>
                 <div class="container">
                     <div class="features-inner section-inner">
@@ -169,7 +169,12 @@ function myFunction() {
                                         </svg>
                                     </div>
                                     <h4 class="feature-title mt-2 h3-mobile"> DATE 時間</h4>
-                                    <p class="text-sm"> <i class="fas fa-calendar-alt"></i> April 13th 2019<br> <i class="fas fa-clock"></i> 10:00 - 17:00
+                                    <p class="text-sm"> 
+                                        <i class="fas fa-calendar-alt"></i> 
+                                        <element id="date">April 13th 2019 </element>
+                                        <br>
+                                        <i class="fas fa-clock"></i> 
+                                        <element id="time">10:00 - 17:00</element>
                                     </p>
                                     <div class="feature-icon">
                                         <svg width="48" height="48" xmlns="http://www.w3.org/2000/svg">
@@ -190,7 +195,14 @@ function myFunction() {
                                         </svg>
                                     </div>
                                     <h4 class="feature-title mt-2 h3-mobile"> LOCATION 地點</h4>
-                                    <p class="text-sm "> <i class="fas fa-map-marker-alt"></i> Fablab Taipei　<br> <a href="https://goo.gl/maps/dSHsfgvwZ1K2"> 104 台北市中山區玉門街1號</a></p> 
+                                    <p class="text-sm "> 
+                                        <i class="fas fa-map-marker-alt"></i> 
+                                        <element id="location">Fablab Taipei</element>
+                                        <br> 
+                                        <a href="https://goo.gl/maps/dSHsfgvwZ1K2"> 
+                                        <element id="address">104 台北市中山區玉門街1號</element>
+                                        </a>
+                                    </p> 
                                     <!--  <p class="text-sm "> <i class="fas fa-map-marker-alt"></i> T.B.D. <br> <a href=""> T.B.D. </a></p>-->
                                 </div>
                             </div>
@@ -243,7 +255,10 @@ function myFunction() {
     
                                         </div>
                                         <h4 class="feature-title h3-mobile">What is ARThon  <br> 什麼是藝術松？</h4>
-                                        <p class="text-sm text-left" > ARThon 是一個以藝術為主題的黑客松。藉由黑客松形式，歡迎藝術家、工程師、設計師、學者... 等不同社群的人聚集一堂，發揮所長、相互交流、完成計畫。無論是你有計畫想要找各方專業幫忙、有作品想透過跨界交流讓精緻度提升,或是好奇想看看藝術松是什麼、想在現場尋找志同道合的夥伴，都歡迎來參加！</p>
+                                        <p class="text-sm text-left" > 
+                                            <element id="about">
+                                        ARThon 是一個以藝術為主題的黑客松。藉由黑客松形式，歡迎藝術家、工程師、設計師、學者... 等不同社群的人聚集一堂，發揮所長、相互交流、完成計畫。無論是你有計畫想要找各方專業幫忙、有作品想透過跨界交流讓精緻度提升,或是好奇想看看藝術松是什麼、想在現場尋找志同道合的夥伴，都歡迎來參加！</element>
+                                        </p>
                                     </div>
                                 </div>
                             <div class="feature is-revealing">
@@ -647,5 +662,8 @@ function myFunction() {
     </div>
 
     <script src="dist/js/main.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.min.js"></script>
+    <script src="src/js/action.js"></script>
+    
 </body>
 </html>
