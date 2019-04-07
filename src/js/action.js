@@ -27,6 +27,23 @@ function getAirTable() {
       .catch(function (error) {
         console.log("error: "+error);
       }); 
+
+  axios.get('https://api.airtable.com/v0/appbRaYO3d3aAK8S7/Timetable?api_key=keyYGK2w73uwzG4s8')
+      .then(function (response) {
+        
+        var table = response.data["records"]; 
+
+      
+        console.log("Time table: \n"+JSON.stringify(table, null, '\t'));
+
+       
+        //set web content after getting table content
+        setTimetable(table);
+        
+      })
+      .catch(function (error) {
+        console.log("error: "+error);
+      }); 
 }
  
 
@@ -59,6 +76,8 @@ function setWebContent(table) {
 
    var teaserTextEn = document.getElementById('teaserTextEn');  
   teaserTextEn.innerText = getTableRecord(table, "title", "teaser text en", "content");
+
+
 }
 
 
@@ -70,14 +89,73 @@ function getTableRecord(table, source, seed, target) {
         
         if(table[r]["fields"][source]===seed){
 
-            console.log("match!");
+            // console.log("match!");
             output = table[r]["fields"][target];
             break;
             
         }else{
-            console.log("not matched...");
+            // console.log("not matched...");
         }
   }    
   return output;
 }
+
+
+function setTimetable(table){
+
+
+  table = table.sort(function(a, b){
+    return a.fields.id - b.fields.id;
+  });
+  console.log("Sorted time table: \n"+JSON.stringify(table, null, '\t'));
+  //insert timetable to html
+
+  var toAdd = document.createDocumentFragment(); 
+
+  for(var t = 0; t < table.length; t++){
+
+      
+
+      // <li class="is-revealing">
+      //     <span class="list-icon">
+      //         <i class="far fa-dot-circle" style="color:#5FFAD0"></i>
+      //     </span>
+      //     <span>10:00 - 10:30     |     Registration & Breakfast 參與者報到與早餐時間</span>
+      // </li>
+
+      var newLi = document.createElement('li');      
+      // newLi.className = 'is-revealing';
+
+      var newSpan = document.createElement('span');   
+      newSpan.className = 'list-icon';
+
+      var newI = document.createElement('i');      
+      newI.className = 'far fa-dot-circle';
+      newI.setAttribute("style", "color:#5FFAD0;");  
+
+      var timeSpan = document.createElement('span');   
+      timeSpan.innerText = table[t]["fields"]["Time"];
+
+      var spacing = document.createElement('span');
+      spacing.innerText = "|";
+      spacing.setAttribute("style", "padding: 0 15px;");  
+
+      var contentSpan = document.createElement('span');   
+      contentSpan.innerText = table[t]["fields"]["Content"];
+      
+
+      newSpan.appendChild(newI);
+      newLi.appendChild(newSpan);
+      newLi.appendChild(timeSpan);
+      newLi.appendChild(spacing);
+      newLi.appendChild(contentSpan);
+      toAdd.appendChild(newLi);
+
+
+  }
+
+   document.getElementById('timetable').appendChild(toAdd);
+
+}
+
 
