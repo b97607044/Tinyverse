@@ -2649,6 +2649,9 @@ table.alt tfoot {
 .wrapper.style3-alt {
   background-color: #e6e6e6;
 }
+.wrapper .darken {
+  background-color: rgba(55, 55, 55, 0.05);
+}
 .wrapper.fullscreen {
   display: -moz-flex;
   display: -webkit-flex;
