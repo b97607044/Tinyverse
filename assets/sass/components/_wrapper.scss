@@ -55,6 +55,10 @@
 			background-color: _palette(accent3-alt);
 		}
 
+		.darken {
+			background-color: _palette(darken);
+		}
+
 		&.fullscreen {
 			@include vendor('display', 'flex');
 			@include vendor('flex-direction', 'column');
